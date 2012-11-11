@@ -4,6 +4,8 @@
 The <tt>Security</tt> package provides security frameworks that allows
 an application to use OpenID or OAuth security frameworks.  This security
 framework was first developed within the Ada Server Faces project.
+This package defines abstractions that are close or similar to Java
+security package.
 
 == Permissions ==
 The <b>Security.Permissions</b> package defines the different permissions that can be
@@ -31,23 +33,23 @@ See http://tools.ietf.org/html/draft-ietf-oauth-v2-26
 The security context provides contextual information for a security controller to
 verify that a permission is granted.
 This security context is used as follows:
-<ul>
-  <li>An instance of the security context is declared within a function/procedure as
-      a local variable
-  <li>This instance will be associated with the current thread through a task attribute
-  <li>The security context is populated with information to identify the current user,
-      his roles, permissions and other information that could be used by security controllers
-  <li>To verify a permission, the current security context is retrieved and the
-      <b>Has_Permission</b> operation is called,
-  <li>The <b>Has_Permission<b> will first look in a small cache stored in the security context.
-  <li>When not present in the cache, it will use the security manager to find the
-      security controller associated with the permission to verify
-  <li>The security controller will be called with the security context to check the permission.
-      The whole job of checking the permission is done by the security controller.
-      The security controller retrieves information from the security context to decide
-      whether the permission is granted or not.
-  <li>The result produced by the security controller is then saved in the local cache.
-</ul>
+
+ * An instance of the security context is declared within a function/procedure as
+ a local variable
+ * This instance will be associated with the current thread through a task attribute
+ * The security context is populated with information to identify the current user,
+ his roles, permissions and other information that could be used by security controllers
+ * To verify a permission, the current security context is retrieved and the
+ <b>Has_Permission</b> operation is called,
+ * The <b>Has_Permission<b> will first look in a small cache stored in the security context.
+ * When not present in the cache, it will use the security manager to find the
+ security controller associated with the permission to verify
+ * The security controller will be called with the security context to check the permission.
+ The whole job of checking the permission is done by the security controller.
+ The security controller retrieves information from the security context to decide
+ whether the permission is granted or not.
+ * The result produced by the security controller is then saved in the local cache.
+
 == Security Controller ==
 The <b>Security.Controllers</b> package defines the security controller used to
 verify that a given permission is granted.  A security controller uses the security
@@ -55,13 +57,12 @@ context and other controller specific and internal data to verify that the permi
 is granted.
 
 To implement a new security controller, one must:
-<ul>
+
+ * Define a type that implements the <b>Controller</b> interface with the
 {{{
-  <li>Define a type that implements the <b>Controller</b> interface with the
-      <b>Has_Permission</b> operation
-  <li>Write a function to allocate instances of the given <b>Controller</b> type
-  <li>Register the function under a unique name by using <b>Register_Controller</b>
-</ul>
+   <b>Has_Permission</b> operation
+ * Write a function to allocate instances of the given <b>Controller</b> type
+ * Register the function under a unique name by using <b>Register_Controller</b>
 }}}
 
 Security controller instances are created when the security policy rules are parsed.
