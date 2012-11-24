@@ -48,6 +48,9 @@ When a permission must be enforced, a security context is created and linked to 
 the application context.  To check the permission, the security policy manager is called
 and it will ask a security controller to verify the permission.
 
+The framework allows an application to plug its own security policy, its own policy context,
+its own principal and authentication mechanism.
+
 == OpenID ==
 The <b>Security.Openid</b> package implements an authentication framework based
 on OpenID 2.0.
