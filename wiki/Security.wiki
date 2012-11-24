@@ -43,6 +43,10 @@ systems: OpenID and OAuth.
 
 [http://ada-security.googlecode.com/svn/wiki/ModelOverview.png]
 
+When a permission must be enforced, a security context is created and linked to the
+<tt>Principal</tt> instance.  Additional security policy context can be added depending on
+the application context.  To check the permission, the security policy manager is called
+and it will ask a security controller to verify the permission.
 
 == OpenID ==
 The <b>Security.Openid</b> package implements an authentication framework based
