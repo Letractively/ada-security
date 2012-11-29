@@ -102,9 +102,10 @@ The <tt>url-policy</tt> definition can contain several <tt>permission</tt>.
 To check a URL permission, you must declare a <tt>URI_Permission</tt> object with the URL.
 
 {{{
-   URI  : constant String := ...;
-   Perm : constant Policies.URLs.URI_Permission (1, URI'Length)
+   URI    : constant String := ...;
+   Perm   : constant Policies.URLs.URI_Permission (1, URI'Length)
              := URI_Permission '(1, Len => URI'Length, URI => URI);
+   Result : Boolean;
 }}}
 
 Having the security context, we can check the permission:
