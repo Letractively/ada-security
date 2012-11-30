@@ -1,6 +1,11 @@
 #summary Security Policies
 
 == Security Policies ==
+The Security Policy defines and implements the set of security rules that specify
+how to protect the system or resources. The <tt>Policy_Manager</tt> maintains
+the security policies.
+
+[http://ada-security.googlecode.com/svn/wiki/PolicyModel.png]
 
 == Role Based Security Policy ==
 The <tt>Security.Policies.Roles</tt> package implements a role based security policy.
