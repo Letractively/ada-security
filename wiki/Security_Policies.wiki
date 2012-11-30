@@ -3,9 +3,15 @@
 == Security Policies ==
 The Security Policy defines and implements the set of security rules that specify
 how to protect the system or resources. The <tt>Policy_Manager</tt> maintains
-the security policies.
+the security policies.  These policies are registered when an application starts
+and before reading the policy configuration files.
 
 [http://ada-security.googlecode.com/svn/wiki/PolicyModel.png]
+
+While the policy configuration files are processed, the policy instances that have been
+registered will create a security controller and bind it to a given permission.  After
+successful initialization, the <tt>Policy_Manager</tt> contains a list of securiy
+controllers which are associated with each permission defined by the application.
 
 == Role Based Security Policy ==
 The <tt>Security.Policies.Roles</tt> package implements a role based security policy.
@@ -123,12 +129,6 @@ The <b>Security.Controllers</b> package defines the security controller used to
 verify that a given permission is granted.  A security controller uses the security
 context and other controller specific and internal data to verify that the permission
 is granted.
-
-To implement a new security controller, one must:
-
-  * Define a type that implements the <b>Controller</b> interface with the <b>Has_Permission</b> operation
-  * Write a function to allocate instances of the given <b>Controller</b> type
-  * Register the function under a unique name by using <b>Register_Controller</b>
 
 Security controller instances are created when the security policy rules are parsed.
 These instances are shared across possibly several concurrent requests.
