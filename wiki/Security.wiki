@@ -118,6 +118,8 @@ A permission is checked by using the <tt>Has_Permission</tt> operation:
 }}}
 
 [Security_Policies Security Policies]
+[Security_OpenID OpenID]
+[Security_OAuth OAuth]
 
 
 ----
