@@ -42,14 +42,14 @@ After this initialization, the OpenID manager can be used in the authentication 
 
 === Discovery: creating the authentication URL ===
 The first step is to create an authentication URL to which the user must be redirected.
-In this step, we have to create an OpenId manager, discover the OpenID provider,
+In this step, we have to create an OpenID manager, discover the OpenID provider,
 do the association and get an <b>End_Point</b>.  The OpenID provider is specified as an
 URL, below is an example for Google OpenID:
 
 {{{
   Provider : constant String := "https://www.google.com/accounts/o8/id";
-  OP    : Openid.End_Point;
-  Assoc : constant Association_Access := new Association;
+  OP       : Openid.End_Point;
+  Assoc    : constant Association_Access := new Association;
 }}}
 
 The following steps are performed:
@@ -88,8 +88,15 @@ must be used to check that the authentication succeeded.
 {{{
   Mgr.Verify (Assoc.all, Params, Auth);
   if Openid.Get_Status (Auth) /= Openid.AUTHENTICATED then ...  -- Failure.
+}}}
 
+=== Principal creation ===
+After the user is successfully authenticated, a user principal can be created and saved in
+the session.  The user principal can then be used to assign permissions to that user and
+enforce the application permissions using the security policy manger.
 
+{{{
+  P : Security.Openid.Principal_Access := Security.Openid.Create_Principal (Auth);
 }}}
 
 ----
