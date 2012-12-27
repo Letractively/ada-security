@@ -66,6 +66,12 @@ configuration files.  In Ada, the permission is used as follows:
 {{{
    Perm_Create_Workspace.Permission
 }}}
+
+== Principal ==
+A principal is created by using either the [Security_OpenID OpenID],
+the [Security_OAuth OAuth] or another authentication mechanism.  The authentication produces
+an object that must implement the <tt>Principal</tt> interface.
+
 == Security Context ==
 The security context provides contextual information for a security controller to
 verify that a permission is granted.
