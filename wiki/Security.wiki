@@ -110,8 +110,11 @@ defines the rules that govern the security and the principal identifies the curr
 A permission is checked by using the <tt>Has_Permission</tt> operation:
 
 {{{
-  if Security.Contexts.Has_Permission (Perm_Create_Workspace.Permission) then --  Granted
-  else  --  Denied
+  if Security.Contexts.Has_Permission (Perm_Create_Workspace.Permission) then
+    -- Granted
+  else
+    -- Denied
+  end if;
 }}}
 
 [Security_Policies Security Policies]
