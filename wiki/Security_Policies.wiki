@@ -27,6 +27,8 @@ as follows:
   </policy-rules>
 }}}
 
+This example defines the `view-profile` permission.
+
 === Grant Permission ===
 The `grant-permission` is another pre-defined permission that gives the permission whatever
 the security context.  The permission is defined as follows:
@@ -37,6 +39,10 @@ the security context.  The permission is defined as follows:
       <name>anonymous</name>
     </grant-permission>
   </policy-rules>
+}}}
+
+This example defines the `anonymous` permission.
+
 == Role Based Security Policy ==
 The <tt>Security.Policies.Roles</tt> package implements a role based security policy.
 In this policy, users are assigned one or several roles and permissions are
@@ -158,7 +164,6 @@ Then, we can check the permission:
 
 {{{
    Result : Boolean := Security.Contexts.Has_Permission (Perm);
-}}}
 }}}
 
 ----
